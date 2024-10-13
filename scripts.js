@@ -49,54 +49,52 @@ function split(str, separator = " ") {
 // Grunnföll sem skilgreina á
 
 function longest(str) {
-  if(isString(str)){
+  if (isString(str)) {
     const words = split(str, " ");
     let longest = "";
 
     for (let i = 0; i < words.length; i++) {
-       wordlength = words[i].length;
-       if (wordlength > longest.length){
+      wordlength = words[i].length;
+      if (wordlength > longest.length) {
         longest = words[i];
-       }
-    } 
+      }
+    }
 
     return longest;
-
-  } 
-    return null;
+  }
+  return null;
 }
 console.assert(
-  longest("hæ heimur") === "heimur", "longest: skilar lengsta orði í streng" 
+  longest("hæ heimur") === "heimur",
+  "longest: skilar lengsta orði í streng"
 );
 
-console.assert(
-  longest(false) === null, "longest: ef ekki strengur skila null"
-);
-
+console.assert(longest(false) === null, "longest: ef ekki strengur skila null");
 
 function shortest(str) {
-  if(isString(str)){
+  if (isString(str)) {
     const words = split(str, " ");
     let shortest = "vaðlaheiðavegavinnuverkfærageymsluskúr";
 
     for (let i = 0; i < words.length; i++) {
-       wordlength = words[i].length;
-       if (wordlength < shortest.length){
+      wordlength = words[i].length;
+      if (wordlength < shortest.length) {
         shortest = words[i];
-       }
+      }
     }
 
     return shortest;
-
-  } 
-    return null;
+  }
+  return null;
 }
 console.assert(
-  shortest("hæ heimur") === "hæ", "shortest: skilar stysta orði í streng"  
+  shortest("hæ heimur") === "hæ",
+  "shortest: skilar stysta orði í streng"
 );
 
 console.assert(
-  shortest(false) === null, "shortest: ef ekki strengur skila null"
+  shortest(false) === null,
+  "shortest: ef ekki strengur skila null"
 );
 
 function reverse(str) {
@@ -105,93 +103,118 @@ function reverse(str) {
     const reversed = split.reverse();
 
     return reversed.join("");
-  } 
+  }
   return null;
 }
-console.assert( 
+console.assert(
   reverse("halló") === "óllah",
   "reverse: snýr við einföldum streng"
 );
 
-console.assert(
-  reverse(false) === null, "reverse: ef ekki strengur skila null"
-);
-
+console.assert(reverse(false) === null, "reverse: ef ekki strengur skila null");
 
 function palindrome(str) {
-  if(isString(str)){
+  if (isString(str)) {
     const stafir = str.toLowerCase().split("");
     let seinni = stafir[stafir.length - 1];
     let isPalindrome = "false";
-  
+
     //búa til for lykkju þar sem fyrsti stafur og síðasti eru bornir saman. EF sami stafur þá fara í næsta staf, ef false þá hætta og skila false.
-    for(let i=0; i < (stafir.length / 2); i++){
-      if (stafir[i] == seinni){
-        isPalindrome = true
-        seinni--
-      }else{
-      isPalindrome = "false"}
-    } return isPalindrome;
+    for (let i = 0; i < stafir.length / 2; i++) {
+      if (stafir[i] == seinni) {
+        isPalindrome = true;
+        seinni--;
+      } else {
+        isPalindrome = "false";
+      }
+    }
+    return isPalindrome;
   }
 }
 console.assert(
-  palindrome("kajak") === "true", "palindrome: athugar hvort strenfur sé eins aftur á bak og áfram"
+  palindrome("kajak") === "true",
+  "palindrome: athugar hvort strenfur sé eins aftur á bak og áfram"
 );
 
 console.assert(
-  palindrome("epli") === "false", "palindrome: athugar hvort strenfur sé eins aftur á bak og áfram"
+  palindrome("epli") === "false",
+  "palindrome: athugar hvort strenfur sé eins aftur á bak og áfram"
 );
 
 console.assert(
-  vowels(false) === null, "palindrome: ef ekki strengur skila null"
+  vowels(false) === null,
+  "palindrome: ef ekki strengur skila null"
 );
-
 
 function vowels(str) {
   if (isString(str)) {
     let nrvowels = 0;
     const stafir = str.toLowerCase().split("");
 
-    for(let i=0; i < stafir.length; i++){
+    for (let i = 0; i < stafir.length; i++) {
       let stafur = stafir[i];
-      if(VOWELS.includes(stafur)){
+      if (VOWELS.includes(stafur)) {
         nrvowels += 1;
       }
     }
-   return nrvowels;
-  }return 0;
+    return nrvowels;
+  }
+  return 0;
 }
 console.assert(
-  vowels("halló") === 2, "vowels: finnur fjölda sérhljóða í streng"
+  vowels("halló") === 2,
+  "vowels: finnur fjölda sérhljóða í streng"
 );
 console.assert(
-  vowels("") === 0, "vowels: ef ekki strengur eða engir sérhljóðar þá skila 0"
+  vowels("") === 0,
+  "vowels: ef ekki strengur eða engir sérhljóðar þá skila 0"
 );
 
 function consonants(str) {
-    if (isString(str)) {
-      let nrconsonants = 0;
-      const stafir = str.toLowerCase().split("");
-  
-      for(let i=0; i < stafir.length; i++){
-        let stafur = stafir[i];
-        if(CONSONANTS.includes(stafur)){
-          nrconsonants += 1;
-        }
+  if (isString(str)) {
+    let nrconsonants = 0;
+    const stafir = str.toLowerCase().split("");
+
+    for (let i = 0; i < stafir.length; i++) {
+      let stafur = stafir[i];
+      if (CONSONANTS.includes(stafur)) {
+        nrconsonants += 1;
       }
-     return nrconsonants;
-    }return 0;
+    }
+    return nrconsonants;
   }
-  console.assert(
-    consonants("halló") === 3, "consonants: finnur fjölda samhljóða í streng"
-  );
-  console.assert(
-    consonants("") === 0, "consonants: ef ekki strengur eða engir samhljóðar þá skila 0"
-  );
+  return 0;
+}
+console.assert(
+  consonants("halló") === 3,
+  "consonants: finnur fjölda samhljóða í streng"
+);
+console.assert(
+  consonants("") === 0,
+  "consonants: ef ekki strengur eða engir samhljóðar þá skila 0"
+);
 
 //------------------------------------------------------------------------------
 // Leiðbeint ferli
 
 function start() {
-  // Útfæra
+  alert("Sláðu inn streng með nokkrum orðum til að fá:\n" + "- Lengsta orðið\n" + "- Stysta orðið\n" + "- Strenginn snúið við\n" + "- Fjölda sérhljóða í streng\n" +"- Fjölda samhljóða í streng\n" + "- Hvort strengurinn sé samhverfur");
+
+  let inputString = prompt("Sláðu inn streng með nokkrum orðum");
+
+  const longestWord = longest(inputString);
+  const shortestWord = shortest(inputString);
+  const reverseString = reverse(inputString);
+  const nrOfVowels = vowels(inputString);
+  const nrOfConsonants = consonants(inputString);
+  const isStringPalindrome = palindrome(inputString);
+
+
+
+  alert(`Lengsta orðið í strengnum er: ${longestWord}\n` + `Stysta orðið í strengnum er: ${shortestWord}\n` + `Strengurinn snúinn við er: ${reverseString}\n` + `Fjöldi sérhljóða í strengnum er: ${nrOfVowels}\n` + `Fjöldi samhljóða í strengnum er: ${nrOfConsonants}\n` + `Strengurinn er ${isStringPalindrome ?  'palindrome' : 'er ekki palindrome'}`); 
+
+  const repeat = confirm("Viltu slá inn annan streng?")
+  if(repeat){
+    start();
+  }
 }
