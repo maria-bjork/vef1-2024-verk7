@@ -213,7 +213,7 @@ function start() {
       `Fjöldi sérhljóða í strengnum er: ${nrOfVowels}\n` +
       `Fjöldi samhljóða í strengnum er: ${nrOfConsonants}\n` +
       `Strengurinn er ${
-        isStringPalindrome ? "palindrome" : "er ekki palindrome"
+        isStringPalindrome ? "palindrome" : "ekki palindrome"
       }`
   );
 
