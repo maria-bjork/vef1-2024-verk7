@@ -111,7 +111,8 @@ console.assert(
   "reverse: snýr við einföldum streng"
 );
 
-console.assert(reverse(false) === null, "reverse: ef ekki strengur skila null");
+console.assert(
+  reverse(false) === null, "reverse: ef ekki strengur skila null");
 
 function palindrome(str) {
   if (isString(str) && str !== "") {
@@ -197,7 +198,11 @@ function start() {
       "- Hvort strengurinn sé samhverfur"
   );
 
-  let inputString = prompt("Sláðu inn streng með nokkrum orðum");
+  const inputString = prompt("Sláðu inn streng með nokkrum orðum");
+
+  if (inputString === null || inputString() === "") {
+    return;
+  }
 
   const longestWord = longest(inputString);
   const shortestWord = shortest(inputString);
